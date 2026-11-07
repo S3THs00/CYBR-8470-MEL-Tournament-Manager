@@ -121,6 +121,6 @@ This mockup illustrates the player registration interface for the Midwest Esport
 
 This mockup illustrates the administrative dashboard for the Midwest Esports League Tournament Manager. Tournament organizers can manage events, monitor player registrations, confirm check-ins and payments, record match results, and view tournament standings.
 
-![MEL Organizer Dashboard Mockup](MEL_Organizer_Dashboard.png)
+![MEL Organizer Dashboard Mockup](MEL_Organizer_Dashboard.drawio.png)
 
 ## C4 Architecture Diagrams
