@@ -125,9 +125,6 @@ This mockup illustrates the administrative dashboard for the Midwest Esports Lea
 
 ## C4 Architecture Diagrams
 
-
-## C4 Architecture Diagrams
-
 ### C4 Level 1: System Context Diagram
 
 The System Context Diagram illustrates how players and tournament organizers interact with the Midwest Esports League Tournament Manager.
