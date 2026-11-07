@@ -137,3 +137,19 @@ The Container Diagram illustrates the proposed application architecture. Players
 
 ![MEL C4 Container Diagram](MEL_C4_Container_Diagram.drawio.png)
 
+### C4 Level 3: Component Diagram
+
+The Component Diagram illustrates the internal architecture of the Django Web Application.
+
+The application consists of five primary components:
+
+- Authentication
+- Tournament Management
+- Player Registration
+- Check-In & Payments
+- Match Results & Standings
+
+These components communicate with one another to manage tournament operations. The Django ORM provides access to the SQLite database, which stores player accounts, tournament information, registrations, payment confirmations, and match results.
+
+![MEL C4 Component Diagram](MEL_C4_Component_Diagram.drawio.png)
+
