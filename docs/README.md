@@ -66,6 +66,50 @@ As a **tournament organizer**, I want to **check in registered players and confi
 
 ## Mis-User Stories
 
+### Mis-User Story 1: Unauthorized Tournament Management
+
+As a **malicious user**, I want to **gain unauthorized access to tournament management functions**, so I can **modify tournament information, manipulate player registrations, or falsify match results**.
+
+**Mitigation Criteria:**
+
+- Tournament management functions require authentication.
+- Only authorized organizers can create, modify, or delete tournaments.
+- Only authorized organizers can modify player check-in, payment status, and match results.
+- The application enforces role-based access control on the server.
+- Unauthorized requests are rejected with an appropriate HTTP error response.
+- Administrative actions are logged for accountability.
+
+### Mis-User Story 2: Fraudulent Tournament Registrations
+
+As a **malicious user**, I want to **submit multiple fraudulent tournament registrations**, so I can **manipulate registration records, disrupt tournament organization, and prevent legitimate players from participating**.
+
+**Mitigation Criteria:**
+
+- The application requires valid registration information.
+- The application prevents duplicate registrations using the same account for the same tournament.
+- Registration forms include server-side input validation.
+- Rate limiting restricts excessive registration attempts.
+- Organizers can review and remove suspicious registrations.
+- Only authorized organizers can confirm tournament participation.
+- Preregistration does not guarantee a tournament spot.
+- Tournament spots are secured only after check-in and payment confirmation.
+
+
+### Mis-User Story 3: Unauthorized Access to Player Information
+
+As a **malicious user**, I want to **access other players' personal information without authorization**, so I can **collect sensitive information for phishing, identity theft, or other malicious activities**.
+
+**Mitigation Criteria:**
+
+- Users must be authenticated to access private account information.
+- Players can only view and modify their own personal information.
+- Only authorized organizers can access player information required for tournament management.
+- The application enforces server-side authorization checks before returning private player data.
+- Passwords are securely hashed using Django's built-in password management system.
+- Sensitive information is not exposed through public pages or application error messages.
+- The application uses HTTPS when deployed to protect information transmitted between users and the server.
+
+
 ## Interface Mockups
 
 ## C4 Architecture Diagrams
