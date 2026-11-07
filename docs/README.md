@@ -124,3 +124,19 @@ This mockup illustrates the administrative dashboard for the Midwest Esports Lea
 ![MEL Organizer Dashboard Mockup](MEL_Organizer_Dashboard.drawio.png)
 
 ## C4 Architecture Diagrams
+
+
+## C4 Architecture Diagrams
+
+### C4 Level 1: System Context Diagram
+
+The System Context Diagram illustrates how players and tournament organizers interact with the Midwest Esports League Tournament Manager.
+
+![MEL C4 System Context Diagram](MEL_C4_System_Context.drawio.png)
+
+### C4 Level 2: Container Diagram
+
+The Container Diagram illustrates the proposed application architecture. Players and tournament organizers interact with the Django web application over HTTPS. Django uses SQLite to store tournament information, registrations, player records, and match results.
+
+![MEL C4 Container Diagram](MEL_C4_Container_Diagram.drawio.png)
+
