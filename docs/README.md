@@ -151,5 +151,6 @@ The application consists of five primary components:
 
 These components communicate with one another to manage tournament operations. The Django ORM provides access to the SQLite database, which stores player accounts, tournament information, registrations, payment confirmations, and match results.
 
-![MEL C4 Component Diagram](MEL_C4_Component_Diagram.drawio.png)
+![MEL C4 Component Diagram](C4%20Level%203%20%E2%80%94%20Component%20Diagram.drawio.png)
+
 
