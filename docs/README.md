@@ -109,7 +109,13 @@ As a **malicious user**, I want to **access other players' personal information 
 - Sensitive information is not exposed through public pages or application error messages.
 - The application uses HTTPS when deployed to protect information transmitted between users and the server.
 
-
 ## Interface Mockups
+
+### Tournament Registration Page
+
+This mockup illustrates the player registration interface for the Midwest Esports League Tournament Manager. Players can view upcoming tournaments, enter their registration information, and review the tournament check-in policies.
+
+![MEL Tournament Registration Mockup](MEL_Tournament_Registration.drawio.png)
+
 
 ## C4 Architecture Diagrams
