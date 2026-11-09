@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Player Login | Midwest Esports League</title>
+
+    <!-- Reuse the existing MEL website stylesheet. -->
+    <link rel="stylesheet" href="{% static 'tournaments/style.css' %}">
+</head>
+<body>
+
+    <!-- Display the MEL website branding. -->
+    <header>
+        <h1>Midwest Esports League</h1>
+        <p>Player Login</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Log In</h2>
+
+            <!-- Display an error if the username or password is incorrect. -->
+            {% if form.errors %}
+                <p role="alert">
+                    Invalid username or password. Please try again.
+                </p>
+            {% endif %}
+
+            <!-- Submit credentials to Django's built-in authentication view. -->
+            <form method="post">
+                {% csrf_token %}
+
+                <p>
+                    <label for="id_username">Username:</label>
+                    {{ form.username }}
+                </p>
+
+                <p>
+                    <label for="id_password">Password:</label>
+                    {{ form.password }}
+                </p>
+
+                <!-- Preserve the requested destination after login. -->
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <button type="submit">Log In</button>
+            </form>
+<!-- Give new players a way to create an account. -->
+<p>
+    Don't have an account?
+    <a href="{% url 'signup' %}">Create Account</a>
+</p>
+
+
+            <p>
+                <a href="{% url 'tournament_list' %}">
+                    Return to Tournaments
+                </a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Remind players about the MEL registration policy. -->
+    <footer>
+        <p>
+            Preregistration does not guarantee a tournament spot.
+            Spots are secured after check-in and payment confirmation.
+        </p>
+    </footer>
+
+</body>
+</html>

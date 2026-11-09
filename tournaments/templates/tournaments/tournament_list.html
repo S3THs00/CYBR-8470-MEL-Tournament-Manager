@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Midwest Esports League | Tournaments</title>
+
+    <!-- Load the MEL Tournament Manager stylesheet. -->
+    <link rel="stylesheet" href="{% static 'tournaments/style.css' %}">
+</head>
+<body>
+
+    <!-- Main heading for the tournament listing page. -->
+    <header>
+        <h1>Midwest Esports League</h1>
+        <p>Upcoming Tournaments</p>
+    </header>
+
+    <main>
+
+        <!-- Display confirmation and error messages from Django. -->
+        {% if messages %}
+            {% for message in messages %}
+                <p role="status">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Display tournaments retrieved from the SQLite database. -->
+        {% for tournament in tournaments %}
+
+            <section>
+                <h2>{{ tournament.name }}</h2>
+
+                <p>
+                    <strong>Date:</strong>
+                    {{ tournament.start_time }}
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    {{ tournament.location }}
+                </p>
+
+                <p>
+                    <strong>Maximum Players:</strong>
+                    {{ tournament.max_players }}
+                </p>
+
+                <p>
+                    <strong>Registration:</strong>
+                    {% if tournament.registration_open %}
+                        Open
+                    {% else %}
+                        Closed
+                    {% endif %}
+                </p>
+
+                <!-- Allow players to preregister only when registration is open. -->
+                {% if tournament.registration_open %}
+
+                    {% if user.is_authenticated %}
+
+                        <!-- Submit registration securely using POST and CSRF protection. -->
+                        <form method="post"
+                              action="{% url 'register_for_tournament' tournament.id %}">
+                            {% csrf_token %}
+
+                            <button type="submit">
+                                Preregister
+                            </button>
+                        </form>
+
+                    {% else %}
+
+                        <!-- Explain why visitors cannot register yet. -->
+                        <p>
+                            Please log in to preregister for this tournament.
+                        </p>
+
+                    {% endif %}
+
+                {% endif %}
+
+            </section>
+
+        {% empty %}
+
+            <!-- Display this message if no tournaments exist. -->
+            <p>No tournaments are currently scheduled.</p>
+
+        {% endfor %}
+    </main>
+
+    <!-- Explain MEL's tournament registration policy. -->
+    <footer>
+        <p>
+            Preregistration does not guarantee a tournament spot.
+            Spots are secured after check-in and payment confirmation.
+        </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6fa;
+    color: #222;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Main page heading */
+header {
+    background-color: #172554;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+/* Main tournament content */
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Individual tournament cards */
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+    color: #172554;
+    margin-top: 0;
+}
+
+/* Registration policy notice */
+footer {
+    background-color: #e2e8f0;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}

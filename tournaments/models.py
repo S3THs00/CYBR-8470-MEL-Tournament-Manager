@@ -1,4 +1,3 @@
-
 from django.db import models
 
 
@@ -24,3 +23,39 @@ class Tournament(models.Model):
     def __str__(self):
         return self.name
 
+# Stores a player's preregistration for a tournament.
+class Registration(models.Model):
+
+    # Connect each registration to an existing tournament.
+    tournament = models.ForeignKey(
+        Tournament,
+        on_delete=models.CASCADE,
+        related_name='registrations'
+    )
+
+    # Connect the registration to a Django user account.
+    player = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+        related_name='tournament_registrations'
+    )
+
+    # Record when the player preregistered.
+    registered_at = models.DateTimeField(auto_now_add=True)
+
+    # Organizers manually confirm check-in and payment.
+    checked_in = models.BooleanField(default=False)
+    payment_confirmed = models.BooleanField(default=False)
+
+    # Prevent the same account from registering twice.
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['tournament', 'player'],
+                name='unique_tournament_player'
+            )
+        ]
+
+    # Display readable registration information in Django Admin.
+    def __str__(self):
+        return f"{self.player.username} - {self.tournament.name}"

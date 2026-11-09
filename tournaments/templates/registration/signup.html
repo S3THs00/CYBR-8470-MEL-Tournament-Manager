@@ -1,0 +1,90 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Midwest Esports League</title>
+
+    <!-- Reuse the MEL website stylesheet. -->
+    <link rel="stylesheet" href="{% static 'tournaments/style.css' %}">
+</head>
+<body>
+
+    <!-- Display the MEL website branding. -->
+    <header>
+        <h1>Midwest Esports League</h1>
+        <p>Create Player Account</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Create Account</h2>
+
+            <p>
+                Create an account to preregister for upcoming
+                Midwest Esports League tournaments.
+            </p>
+
+            <!-- Display account creation errors, if any. -->
+            {% if form.non_field_errors %}
+                <div role="alert">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- Submit account information securely to Django. -->
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Display username and password fields. -->
+                {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}
+                        {{ field }}
+
+                        <!-- Explain password requirements and validation errors. -->
+                        {% if field.help_text %}
+                            <small>{{ field.help_text }}</small>
+                        {% endif %}
+
+                        {% if field.errors %}
+                            <span role="alert">
+                                {{ field.errors }}
+                            </span>
+                        {% endif %}
+                    </p>
+                {% endfor %}
+
+                <button type="submit">
+                    Create Account
+                </button>
+            </form>
+
+            <!-- Allow existing players to log in instead. -->
+            <p>
+                Already have an account?
+                <a href="{% url 'login' %}">Log In</a>
+            </p>
+
+            <!-- Return to the tournament listing. -->
+            <p>
+                <a href="{% url 'tournament_list' %}">
+                    Return to Tournaments
+                </a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Explain MEL's tournament registration policy. -->
+    <footer>
+        <p>
+            Preregistration does not guarantee a tournament spot.
+            Spots are secured after check-in and payment confirmation.
+        </p>
+    </footer>
+
+</body>
+</html>
